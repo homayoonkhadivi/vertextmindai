@@ -22,6 +22,7 @@ export const industries: Industry[] = [
           "Designed and deployed a CNN and transfer learning model to detect pneumonia from chest X-ray images. Trained on annotated clinical datasets using SageMaker Studio and JumpStart, with Infrastructure as Code for reproducible deployment. Achieved a Kaggle Gold Medal for diagnostic accuracy.",
         outcome: "70% improvement in patient outcomes. Gold Medal on Kaggle.",
         tags: ["CNN", "Transfer Learning", "SageMaker", "DICOM"],
+        demoUrl: "https://cancer-detection-application.streamlit.app/?embed=true",
       },
       {
         title: "Multimodal Clinical Document Intelligence",
