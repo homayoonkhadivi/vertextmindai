@@ -1,11 +1,11 @@
-import Navigation from "@/components/Navigation";
-import Hero from "@/components/Hero";
-import IndustriesOverview from "@/components/IndustriesOverview";
-import IndustrySection from "@/components/IndustrySection";
-import ProcessSection from "@/components/ProcessSection";
-import AboutSection from "@/components/AboutSection";
-import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
+import Navigation from "@/components/layout/Navigation";
+import Footer from "@/components/layout/Footer";
+import Hero from "@/components/sections/Hero";
+import IndustriesOverview from "@/components/sections/IndustriesOverview";
+import IndustrySection from "@/components/sections/IndustrySection";
+import ProcessSection from "@/components/sections/ProcessSection";
+import AboutSection from "@/components/sections/AboutSection";
+import ContactSection from "@/components/sections/ContactSection";
 import { industries } from "@/data/industries";
 
 export default function Home() {

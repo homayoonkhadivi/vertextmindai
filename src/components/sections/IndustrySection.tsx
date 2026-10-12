@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Industry } from "@/types";
-import DemoModal from "./DemoModal";
+import DemoModal from "@/components/ui/DemoModal";
 
 interface Props {
   industry: Industry;

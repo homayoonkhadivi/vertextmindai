@@ -1,6 +1,6 @@
 const credentials = [
   { label: "Kaggle Expert", detail: "Gold Medal — Medical Imaging" },
-  { label: "Santos Ltd", detail: "Senior Advanced Analytics Engineer" },
+  { label: "Major ASX Energy Co.", detail: "Senior Advanced Analytics Engineer" },
   { label: "10+ Years", detail: "Enterprise AI/ML delivery" },
   { label: "AWS · Azure · GCP", detail: "Multi-cloud architecture" },
   { label: "National Swimmer", detail: "Former Australian competitive athlete" },
@@ -28,7 +28,7 @@ export default function AboutSection() {
               executive leadership.
             </p>
             <p className="text-[#777799] leading-relaxed mb-5">
-              My recent work at Santos involved multimodal document pipelines
+              My recent work at a major ASX-listed energy company involved multimodal document pipelines
               achieving 95%+ accuracy, agentic RAG systems, multi-agent
               platforms integrating Microsoft 365 and Snowflake, and
               semi-real-time inspection AI. Before that: geospatial ML for
