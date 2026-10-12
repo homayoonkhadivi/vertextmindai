@@ -19,7 +19,7 @@ export default function ContactSection() {
 
             <div className="space-y-4">
               <a
-                href="mailto:homi@vertexmindai.com.au"
+                href="mailto:khadivi.homi@vertexmindai.com.au"
                 className="flex items-center gap-4 group"
               >
                 <div className="w-10 h-10 flex items-center justify-center bg-[#0d0d16] border border-[#1e1e2e] rounded-lg text-[#7c6fcd] group-hover:border-[#7c6fcd44] transition-colors shrink-0">
@@ -31,7 +31,7 @@ export default function ContactSection() {
                 <div>
                   <div className="text-xs text-[#44445a] mb-0.5">Email</div>
                   <div className="text-sm text-[#a0a0c0] group-hover:text-white transition-colors">
-                    homi@vertexmindai.com.au
+                    khadivi.homi@vertexmindai.com.au
                   </div>
                 </div>
               </a>
@@ -80,7 +80,7 @@ export default function ContactSection() {
               ))}
             </div>
             <a
-              href="mailto:homi@vertexmindai.com.au"
+              href="mailto:khadivi.homi@vertexmindai.com.au"
               className="block text-center bg-[#7c6fcd] hover:bg-[#6a5db8] text-white font-semibold px-6 py-3 rounded-lg transition-colors text-sm"
             >
               Send a Message

@@ -38,7 +38,7 @@ export default function Footer() {
             </svg>
           </a>
           <a
-            href="mailto:homi@vertexmindai.com.au"
+            href="mailto:khadivi.homi@vertexmindai.com.au"
             className="text-[#44445a] hover:text-[#7c6fcd] transition-colors"
             aria-label="Email"
           >
