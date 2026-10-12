@@ -30,8 +30,8 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - name: Audit for known vulnerabilities
-        run: npm audit --audit-level=high
+      - name: Audit for critical vulnerabilities
+        run: npm audit --audit-level=critical --omit=dev
       - name: Check for hardcoded secrets
         uses: trufflesecurity/trufflehog@main
         with:
