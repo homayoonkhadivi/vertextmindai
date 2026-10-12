@@ -2,7 +2,17 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
+import ParallaxBackground from "@/components/layout/ParallaxBackground";
+import UseCaseCards from "@/components/sections/UseCaseCards";
 import { industries } from "@/data/industries";
+
+const slugImages: Record<string, string> = {
+  healthcare: "/images/healthcare_cards.jpg",
+  energy: "/images/energy_card.jpg",
+  mining: "/images/mining_card.jpg",
+  sports: "/images/sports_card.jpg",
+  "digital-transformation": "/images/digital_card.jpg",
+};
 
 export function generateStaticParams() {
   return industries.map((i) => ({ slug: i.slug }));
@@ -19,10 +29,11 @@ export default async function IndustryPage({
 
   return (
     <>
+      <ParallaxBackground src={slugImages[slug] ?? "/images/digital_card.jpg"} />
       <Navigation />
       <main>
         {/* Hero */}
-        <section className="px-6 py-28 border-b border-[#1e1e2e] max-w-4xl mx-auto">
+        <section className="px-6 py-28 border-b border-[#ffffff0d] max-w-4xl mx-auto">
           <Link
             href="/#services"
             className="text-[#7c6fcd] text-xs font-semibold tracking-widest uppercase mb-6 inline-block hover:underline"
@@ -41,7 +52,7 @@ export default async function IndustryPage({
         </section>
 
         {/* Narrative sections */}
-        <section className="px-6 py-16 max-w-4xl mx-auto">
+        <section className="px-6 py-16 max-w-4xl mx-auto bg-[#0a0a0f]/70 backdrop-blur-sm rounded-2xl my-4">
           <div className="space-y-16">
             {industry.narrative.map((section, i) => (
               <div key={i} className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8">
@@ -56,8 +67,11 @@ export default async function IndustryPage({
           </div>
         </section>
 
+        {/* Use Cases */}
+        <UseCaseCards useCases={industry.useCases} />
+
         {/* Case Studies */}
-        <section className="px-6 py-16 border-t border-[#1e1e2e]">
+        <section className="px-6 py-16 border-t border-[#ffffff0d] bg-[#0a0a0f]/70 backdrop-blur-sm">
           <div className="max-w-4xl mx-auto">
             <p className="text-[#7c6fcd] text-xs font-semibold tracking-widest uppercase mb-10">
               Case Studies
@@ -90,7 +104,7 @@ export default async function IndustryPage({
         </section>
 
         {/* CTA */}
-        <section className="px-6 py-20 border-t border-[#1e1e2e] text-center">
+        <section className="px-6 py-20 border-t border-[#ffffff0d] text-center">
           <div className="max-w-xl mx-auto">
             <h2 className="text-2xl font-bold text-white mb-4">
               Want to explore what this looks like for your organisation?

@@ -1,3 +1,12 @@
+export interface UseCase {
+  title: string;
+  hook: string;
+  problem: string;
+  idea: string;
+  vision: string;
+  outcome: string;
+}
+
 export interface CaseStudy {
   title: string;
   description: string;
@@ -20,5 +29,6 @@ export interface Industry {
     subheadline: string;
   };
   narrative: NarrativeSection[];
+  useCases: UseCase[];
   caseStudies: CaseStudy[];
 }

@@ -3,13 +3,13 @@
 import { useState } from "react";
 
 const links = [
-  { label: "Services", href: "#services" },
-  { label: "Healthcare", href: "#healthcare" },
-  { label: "Energy", href: "#energy" },
-  { label: "Mining", href: "#mining" },
-  { label: "Sports", href: "#sports" },
-  { label: "Transformation", href: "#digital-transformation" },
-  { label: "About", href: "#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Healthcare", href: "/healthcare" },
+  { label: "Energy", href: "/energy" },
+  { label: "Mining", href: "/mining" },
+  { label: "Sports", href: "/sports" },
+  { label: "Transformation", href: "/digital-transformation" },
+  { label: "About", href: "/#about" },
 ];
 
 export default function Navigation() {
@@ -18,7 +18,7 @@ export default function Navigation() {
   return (
     <nav className="sticky top-0 z-40 border-b border-[#1e1e2e] bg-[#0a0a0f]/95 backdrop-blur">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2">
+        <a href="/" className="flex items-center gap-2">
           <span className="text-[#7c6fcd] font-bold text-lg tracking-tight">
             VertexMind<span className="text-white">AI</span>
           </span>
