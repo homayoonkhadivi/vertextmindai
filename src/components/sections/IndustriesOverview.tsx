@@ -1,7 +1,7 @@
 import { industries } from "@/data/industries";
 
 const slugImages: Record<string, string> = {
-  healthcare: "/images/healthcare_cards.jpg",
+  healthcare: "/images/healthcare_background.jpg",
   energy: "/images/energy_card.jpg",
   mining: "/images/mining_card.jpg",
   sports: "/images/sports_card.jpg",

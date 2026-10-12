@@ -8,7 +8,7 @@ export default function ParallaxBackground({ src }: { src: string }) {
   useEffect(() => {
     const onScroll = () => {
       if (imgRef.current) {
-        imgRef.current.style.transform = `translateY(${window.scrollY * 0.25}px)`;
+        imgRef.current.style.transform = `translateY(${-window.scrollY * 0.06}px)`;
       }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -19,11 +19,11 @@ export default function ParallaxBackground({ src }: { src: string }) {
     <div className="fixed inset-0 -z-10 overflow-hidden">
       <div
         ref={imgRef}
-        className="absolute inset-0 scale-[1.3]"
+        className="absolute inset-0 scale-[2.2]"
         style={{
           backgroundImage: `url(${src})`,
           backgroundSize: "cover",
-          backgroundPosition: "center top",
+          backgroundPosition: "center center",
         }}
       />
       <div className="absolute inset-0 bg-[#0a0a0f]/80" />

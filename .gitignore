@@ -4,5 +4,5 @@ out/
 tsconfig.tsbuildinfo
 code_assistant/
 CLAUDE.md
-*.Zone.Identifier
+*Zone.Identifier
 **/__pycache__/

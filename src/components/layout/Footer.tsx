@@ -1,16 +1,16 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-[#1e1e2e] px-6 py-8">
+    <footer className="border-t border-[#1e1e2e] px-6 py-8 bg-[#0a0a0f]">
       <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
           <span className="text-[#7c6fcd] font-bold text-sm tracking-tight">
             VertexMind<span className="text-white">AI</span>
           </span>
           <span className="text-[#2a2a3a] text-xs">·</span>
-          <span className="text-[#44445a] text-xs">Australia</span>
+          <span className="text-[#666688] text-xs">Australia</span>
         </div>
 
-        <p className="text-[#33334a] text-xs">
+        <p className="text-[#666688] text-xs">
           &copy; {new Date().getFullYear()} VertexMind AI — Homayoon Khadivi. All rights reserved.
         </p>
 
@@ -19,7 +19,7 @@ export default function Footer() {
             href="https://www.linkedin.com/in/homayoon-khadivi"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#44445a] hover:text-[#7c6fcd] transition-colors"
+            className="text-[#8888aa] hover:text-[#7c6fcd] transition-colors"
             aria-label="LinkedIn"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -30,7 +30,7 @@ export default function Footer() {
             href="https://github.com/homayoonkhadivi"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#44445a] hover:text-[#7c6fcd] transition-colors"
+            className="text-[#8888aa] hover:text-[#7c6fcd] transition-colors"
             aria-label="GitHub"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -39,7 +39,7 @@ export default function Footer() {
           </a>
           <a
             href="mailto:khadivi.homi@vertexmindai.com.au"
-            className="text-[#44445a] hover:text-[#7c6fcd] transition-colors"
+            className="text-[#8888aa] hover:text-[#7c6fcd] transition-colors"
             aria-label="Email"
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
