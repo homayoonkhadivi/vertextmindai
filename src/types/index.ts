@@ -6,11 +6,19 @@ export interface CaseStudy {
   demoUrl?: string;
 }
 
+export interface NarrativeSection {
+  title: string;
+  body: string;
+}
+
 export interface Industry {
   slug: string;
   name: string;
   tagline: string;
-  description: string;
-  capabilities: string[];
+  hero: {
+    headline: string;
+    subheadline: string;
+  };
+  narrative: NarrativeSection[];
   caseStudies: CaseStudy[];
 }

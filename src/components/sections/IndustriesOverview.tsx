@@ -56,7 +56,7 @@ export default function IndustriesOverview() {
           {industries.map((ind) => (
             <a
               key={ind.slug}
-              href={`#${ind.slug}`}
+              href={`/${ind.slug}`}
               className="group bg-[#0d0d16] border border-[#1e1e2e] hover:border-[#7c6fcd44] rounded-xl p-6 transition-all hover:bg-[#111120] block"
             >
               <div className="text-[#7c6fcd] mb-4 w-10 h-10 flex items-center justify-center bg-[#7c6fcd12] rounded-lg border border-[#7c6fcd22]">
