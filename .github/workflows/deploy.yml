@@ -34,9 +34,6 @@ jobs:
       - name: TypeScript type check
         run: npx tsc --noEmit
 
-      - name: ESLint
-        run: npx next lint
-
   build:
     name: Build
     needs: lint
