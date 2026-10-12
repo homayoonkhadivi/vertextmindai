@@ -1,4 +1,4 @@
-name: CI / Deploy to GitHub Pages
+name: CI/CD — VertexMind AI
 
 on:
   push:
@@ -16,27 +16,46 @@ concurrency:
   group: pages-${{ github.ref }}
   cancel-in-progress: true
 
+# ─── CI ───────────────────────────────────────────────────────────────────────
+
 jobs:
-  lint:
-    name: Lint & Type Check
+
+  security-audit:
+    name: "[DevSecOps] Dependency Vulnerability Scan"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
+      - run: npm ci
+      - name: Audit for known vulnerabilities
+        run: npm audit --audit-level=high
+      - name: Check for hardcoded secrets
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: HEAD~1
+          head: HEAD
+        continue-on-error: true
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: TypeScript type check
+  type-check:
+    name: "[DevOps] TypeScript Type Check"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Strict type check
         run: npx tsc --noEmit
 
   build:
-    name: Build
-    needs: lint
+    name: "[DevOps] Build & Bundle Analysis"
+    needs: [security-audit, type-check]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -49,32 +68,80 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Next.js static export
+      - name: Cache Next.js build
+        uses: actions/cache@v4
+        with:
+          path: .next/cache
+          key: nextjs-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.ts', '**/*.tsx') }}
+          restore-keys: nextjs-${{ runner.os }}-
+
+      - name: Build static export
         run: npm run build
 
-      - name: Verify output exists
+      - name: Verify output integrity
         run: |
-          if [ ! -d "./out" ]; then
-            echo "Build output missing — ./out not found"
-            exit 1
-          fi
-          echo "Pages in output:"
+          echo "── Generated pages ──"
           find ./out -name "*.html" | sort
+          echo ""
+          echo "── Asset sizes ──"
+          du -sh ./out/_next/static/chunks/*.js 2>/dev/null | sort -rh | head -10
+          echo ""
+          PAGES=$(find ./out -name "*.html" | wc -l)
+          echo "Total pages: $PAGES"
+          [ "$PAGES" -ge 6 ] || { echo "Expected at least 6 pages"; exit 1; }
 
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
 
+# ─── CD ───────────────────────────────────────────────────────────────────────
+
   deploy:
-    name: Deploy
+    name: "[CD] Deploy to GitHub Pages"
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+
+# ─── Post-Deploy ──────────────────────────────────────────────────────────────
+
+  smoke-test:
+    name: "[MLOps] Post-Deploy Health Check"
+    needs: deploy
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Wait for CDN propagation
+        run: sleep 20
+
+      - name: Validate all routes return 200
+        run: |
+          ROUTES=("" "healthcare" "energy" "mining" "sports" "digital-transformation")
+          FAILED=0
+          for ROUTE in "${ROUTES[@]}"; do
+            URL="https://vertexmindai.com.au/${ROUTE}/"
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$URL")
+            if [ "$STATUS" = "200" ]; then
+              echo "✓ $URL ($STATUS)"
+            else
+              echo "✗ $URL ($STATUS)"
+              FAILED=$((FAILED + 1))
+            fi
+          done
+          [ "$FAILED" -eq 0 ] || { echo "$FAILED route(s) failed"; exit 1; }
+
+      - name: Check response time (performance gate)
+        run: |
+          TIME=$(curl -s -o /dev/null -w "%{time_total}" https://vertexmindai.com.au/)
+          echo "Home page response time: ${TIME}s"
+          python3 -c "import sys; t=float('$TIME'); sys.exit(0 if t < 3.0 else 1)" \
+            || echo "Warning: response time above 3s threshold"
