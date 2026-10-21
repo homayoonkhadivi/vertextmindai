@@ -1,0 +1,21 @@
+name: Keep Streamlit Apps Alive
+
+on:
+  schedule:
+    - cron: "*/20 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    name: Ping Streamlit apps
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Streamlit apps
+        run: |
+          declare -A APPS
+          APPS["cancer-detection"]="https://cancer-detection-application.streamlit.app/"
+          APPS["gender-sentiment"]="https://gender-classification-text-sentiment-analysis-bprfgtyn4pfjc2hb.streamlit.app/"
+          for NAME in "${!APPS[@]}"; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "${APPS[$NAME]}")
+            echo "$NAME: $STATUS"
+          done

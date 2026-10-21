@@ -1,6 +1,6 @@
 const credentials = [
-  { label: "Kaggle Expert", detail: "Gold Medal — Medical Imaging" },
-  { label: "Major ASX Energy Co.", detail: "Senior Advanced Analytics Engineer" },
+  { label: "Kaggle Expert", detail: "Gold Medal, Medical Imaging" },
+  { label: "Major ASX Energy Co.", detail: "Senior / Lead AI/ML Engineer" },
   { label: "10+ Years", detail: "Enterprise AI/ML delivery" },
   { label: "AWS · Azure · GCP", detail: "Multi-cloud architecture" },
   { label: "National Swimmer", detail: "Former Australian competitive athlete" },
@@ -20,26 +20,30 @@ export default function AboutSection() {
               Built by an engineer who has shipped it
             </h2>
             <p className="text-[#777799] leading-relaxed mb-5">
-              I&apos;m Homayoon Khadivi — a Senior AI/ML Engineer with over a decade
-              of experience architecting and delivering enterprise AI systems
-              across AWS, Azure, and GCP. I&apos;ve worked at the intersection of
-              research and production — from training cancer detection models
-              to building real-time video inference systems recognised by
-              executive leadership.
+              I&apos;m Homayoon Khadivi, a Senior AI/ML Engineer with over a decade of experience
+              architecting and delivering enterprise AI systems across AWS, Azure, and GCP.
+              My work spans the full spectrum from cancer detection models and real-time video
+              inference systems to multi-agent platforms and LLM-powered document pipelines,
+              all built for production and recognised by executive leadership for scalability and impact.
             </p>
             <p className="text-[#777799] leading-relaxed mb-5">
-              My recent work at a major ASX-listed energy company involved multimodal document pipelines
-              achieving 95%+ accuracy, agentic RAG systems, multi-agent
-              platforms integrating Microsoft 365 and Snowflake, and
-              semi-real-time inspection AI. Before that: geospatial ML for
-              property analytics, predictive maintenance at one of the
-              world&apos;s largest copper mines, and healthcare AI at a radiology
-              practice.
+              At a major ASX-listed energy company, I led the end-to-end delivery of
+              production AI platforms serving engineering, legal, HSE, and subsurface teams,
+              including multimodal pipelines at 95% accuracy, agentic RAG systems, and
+              real-time inspection AI with 92% detection accuracy using zero labelled data.
+              Beyond building, I drove architectural decisions, mentored engineers, shaped
+              AI adoption strategy across the organisation, and presented directly to
+              General Managers and AI leads.
+            </p>
+            <p className="text-[#777799] leading-relaxed mb-5">
+              Before that: geospatial ML for property analytics, predictive maintenance
+              at one of the world&apos;s largest copper mines, and healthcare AI at a
+              radiology practice. Each engagement has added to a track record of AI
+              that actually ships and delivers measurable outcomes.
             </p>
             <p className="text-[#777799] leading-relaxed">
-              VertexMind AI is how I work with Australian businesses directly —
-              bringing enterprise-grade thinking to organisations that want AI
-              to drive real, measurable outcomes.
+              VertexMind AI is how I bring that enterprise-grade thinking directly
+              to Australian businesses that want AI to work, not just to exist on a roadmap.
             </p>
 
             <div className="flex flex-wrap gap-3 mt-8">

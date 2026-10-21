@@ -9,6 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  icons: { icon: "/favicon.ico" },
   title: "VertexMind AI — AI Consulting Australia",
   description:
     "Senior AI consulting across healthcare, energy, mining, sports analytics, and digital transformation. Real deployments, measurable outcomes.",

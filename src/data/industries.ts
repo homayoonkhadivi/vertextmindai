@@ -357,6 +357,14 @@ export const industries: Industry[] = [
         outcome: "Model drift detected automatically. Deployment time cut by 80%.",
         tags: ["MLOps", "SageMaker", "CI/CD", "Model Monitoring"],
       },
+      {
+        title: "Customer Intelligence: Gender & Sentiment from Text",
+        description:
+          "A machine learning system that reads customer-written text and infers audience profile and sentiment in real time. Built originally on Twitter descriptions, the same pipeline applies to any customer text — support tickets, reviews, sign-up forms, chat transcripts. Gives marketing and sales teams an automatic understanding of who they are talking to, without surveys or manual tagging.",
+        outcome: "Instant audience segmentation from raw text. Deployable into any CRM or marketing automation pipeline.",
+        tags: ["NLP", "Text Classification", "Sentiment Analysis", "Scikit-learn", "Streamlit"],
+        demoUrl: "https://gender-classification-text-sentiment-analysis-bprfgtyn4pfjc2hb.streamlit.app/?embed=true",
+      },
     ],
   },
 ];

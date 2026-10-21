@@ -4,6 +4,7 @@ import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import ParallaxBackground from "@/components/layout/ParallaxBackground";
 import UseCaseCards from "@/components/sections/UseCaseCards";
+import CaseStudies from "@/components/sections/CaseStudies";
 import { industries } from "@/data/industries";
 
 const slugImages: Record<string, string> = {
@@ -76,30 +77,7 @@ export default async function IndustryPage({
             <p className="text-[#7c6fcd] text-xs font-semibold tracking-widest uppercase mb-10">
               Case Studies
             </p>
-            <div className="space-y-6">
-              {industry.caseStudies.map((cs) => (
-                <div
-                  key={cs.title}
-                  className="bg-[#0d0d16] border border-[#1e1e2e] rounded-xl p-8"
-                >
-                  <h3 className="text-white font-bold text-lg mb-3">{cs.title}</h3>
-                  <p className="text-[#7777aa] leading-relaxed mb-5">{cs.description}</p>
-                  <p className="text-[#7c6fcd] text-sm font-medium mb-5">
-                    → {cs.outcome}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {cs.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="bg-[#1a1a2e] border border-[#7c6fcd33] text-[#7c6fcd] text-xs px-3 py-1 rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
+            <CaseStudies caseStudies={industry.caseStudies} />
           </div>
         </section>
 
