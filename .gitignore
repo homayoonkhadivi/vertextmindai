@@ -6,3 +6,11 @@ code_assistant/
 CLAUDE.md
 *Zone.Identifier
 **/__pycache__/
+
+# Playwright
+test-results/
+playwright-report/
+keep-alive-*.png
+
+# Local env
+.env*.local

@@ -84,17 +84,17 @@ export default function AboutSection() {
           </div>
 
           <div>
-            <h3 className="text-xs text-[#44445a] font-semibold tracking-widest uppercase mb-5">
+            <h3 className="text-xs text-[#7a7a96] font-semibold tracking-widest uppercase mb-5">
               Credentials
             </h3>
             <div className="space-y-3">
               {credentials.map((c) => (
                 <div
                   key={c.label}
-                  className="flex items-start justify-between bg-[#0d0d16] border border-[#1e1e2e] rounded-xl px-5 py-4"
+                  className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-4 bg-[#0d0d16] border border-[#1e1e2e] rounded-xl px-5 py-4"
                 >
                   <span className="text-white text-sm font-medium">{c.label}</span>
-                  <span className="text-[#555577] text-xs text-right ml-4 leading-relaxed max-w-[50%]">
+                  <span className="text-[#8a8aa8] text-xs sm:text-right leading-relaxed sm:max-w-[55%]">
                     {c.detail}
                   </span>
                 </div>
@@ -105,7 +105,7 @@ export default function AboutSection() {
               <p className="text-[#9988dd] text-sm font-medium mb-1">
                 Master of Computer & Data Science
               </p>
-              <p className="text-[#555577] text-xs">
+              <p className="text-[#8a8aa8] text-xs">
                 Bachelor of Mining Engineering — AmirKabir University of Technology
               </p>
             </div>

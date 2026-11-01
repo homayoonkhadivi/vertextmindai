@@ -35,7 +35,7 @@ export default function Navigation() {
             VertexMind<span className="text-white">AI</span>
           </span>
           <span className="hidden sm:block text-[#2a2a3a] text-sm select-none">|</span>
-          <span className="hidden sm:block text-[#44445a] text-xs">Australia</span>
+          <span className="hidden sm:block text-[#7a7a96] text-xs">Australia</span>
         </a>
 
         <div className="hidden lg:flex items-center gap-6">
@@ -62,7 +62,9 @@ export default function Navigation() {
         <button
           className="lg:hidden text-[#a0a0b8] hover:text-white p-1"
           onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
         >
           {open ? (
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -77,7 +79,7 @@ export default function Navigation() {
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-[#1e1e2e] px-6 pb-5 pt-3">
+        <div id="mobile-menu" className="lg:hidden border-t border-[#1e1e2e] px-6 pb-5 pt-3">
           {links.map((l) => (
             <a
               key={l.href}

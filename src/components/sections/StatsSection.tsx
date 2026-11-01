@@ -96,7 +96,7 @@ function Counter({ value, prefix = "", suffix = "" }: { value: number; prefix?: 
   }, [value]);
 
   return (
-    <div ref={ref} className="text-4xl sm:text-5xl font-black tabular-nums text-white">
+    <div ref={ref} className="text-3xl sm:text-5xl font-black tabular-nums text-white">
       {prefix}{count}{suffix}
     </div>
   );
@@ -124,7 +124,7 @@ export default function StatsSection() {
               <p className="text-white text-sm font-semibold mt-2 mb-1 leading-snug">
                 {stat.label}
               </p>
-              <p className="text-[#555577] text-xs leading-relaxed mt-auto pt-2">{stat.detail}</p>
+              <p className="text-[#8a8aa8] text-xs leading-relaxed mt-auto pt-2">{stat.detail}</p>
             </div>
           ))}
         </div>

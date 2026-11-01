@@ -33,3 +33,28 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Respect users who ask the OS for less motion (also saves battery on mobile). */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Anchor targets land below the fixed nav. */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* Guard against stray horizontal scroll on small screens. */
+html,
+body {
+  overflow-x: clip;
+}

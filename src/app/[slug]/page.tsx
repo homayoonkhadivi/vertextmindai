@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Navigation from "@/components/layout/Navigation";
@@ -5,18 +6,38 @@ import Footer from "@/components/layout/Footer";
 import ParallaxBackground from "@/components/layout/ParallaxBackground";
 import UseCaseCards from "@/components/sections/UseCaseCards";
 import CaseStudies from "@/components/sections/CaseStudies";
+import BookCallButton from "@/components/ui/BookCallButton";
+import { mailto } from "@/config/site";
 import { industries } from "@/data/industries";
 
 const slugImages: Record<string, string> = {
-  healthcare: "/images/healthcare_background.jpg",
-  energy: "/images/energy_card.jpg",
-  mining: "/images/mining_card.jpg",
-  sports: "/images/sports_card.jpg",
-  "digital-transformation": "/images/digital_card.jpg",
+  healthcare: "/images/healthcare_background.webp",
+  energy: "/images/energy_card.webp",
+  mining: "/images/mining_card.webp",
+  sports: "/images/sports_card.webp",
+  "digital-transformation": "/images/digital_card.webp",
 };
 
 export function generateStaticParams() {
   return industries.map((i) => ({ slug: i.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const industry = industries.find((i) => i.slug === slug);
+  if (!industry) return {};
+  const title = `AI for ${industry.name}`;
+  const description = industry.hero.subheadline;
+  return {
+    title,
+    description,
+    alternates: { canonical: `/${slug}/` },
+    openGraph: { title, description, url: `/${slug}/`, images: ["/og.png"] },
+  };
 }
 
 export default async function IndustryPage({
@@ -30,11 +51,11 @@ export default async function IndustryPage({
 
   return (
     <>
-      <ParallaxBackground src={slugImages[slug] ?? "/images/digital_card.jpg"} />
+      <ParallaxBackground src={slugImages[slug] ?? "/images/digital_card.webp"} />
       <Navigation />
-      <main>
+      <main id="main">
         {/* Hero */}
-        <section className="px-6 py-28 border-b border-[#1e1e2e] max-w-4xl mx-auto">
+        <section className="px-6 pt-16 pb-12 sm:py-28 border-b border-[#1e1e2e] max-w-4xl mx-auto">
           <Link
             href="/#services"
             className="text-[#7c6fcd] text-xs font-semibold tracking-widest uppercase mb-6 inline-block hover:underline"
@@ -44,7 +65,7 @@ export default async function IndustryPage({
           <p className="text-[#7c6fcd] text-xs font-semibold tracking-widest uppercase mb-4">
             {industry.name}
           </p>
-          <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight text-white mb-6">
+          <h1 className="text-3xl sm:text-5xl font-extrabold leading-tight text-white mb-6">
             {industry.hero.headline}
           </h1>
           <p className="text-[#8888aa] text-lg leading-relaxed max-w-2xl">
@@ -91,11 +112,12 @@ export default async function IndustryPage({
               The first conversation is always about understanding your problem, not pitching a solution.
             </p>
             <a
-              href="mailto:khadivi.homi@vertexmindai.com.au"
+              href={mailto}
               className="bg-[#7c6fcd] hover:bg-[#6a5db8] text-white font-semibold px-8 py-3 rounded-lg transition-colors inline-block"
             >
               Get in Touch
             </a>
+            <BookCallButton className="mt-3 sm:mt-0 sm:ml-3" />
           </div>
         </section>
       </main>
