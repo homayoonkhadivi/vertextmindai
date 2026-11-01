@@ -1,14 +1,16 @@
 "use client";
 
 import { useForm, ValidationError } from "@formspree/react";
+import BookCallButton from "@/components/ui/BookCallButton";
+import { mailto, site } from "@/config/site";
 
 export default function ContactSection() {
-  const [state, handleSubmit] = useForm("mkjolvjn");
+  const [state, handleSubmit] = useForm(site.formspreeId);
 
   return (
-    <section id="contact" className="px-6 py-24 border-t border-[#1e1e2e]">
+    <section id="contact" className="px-6 py-16 sm:py-24 border-t border-[#1e1e2e] scroll-mt-20">
       <div className="max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
           {/* Left */}
           <div>
@@ -23,7 +25,7 @@ export default function ContactSection() {
             </p>
 
             <div className="space-y-4">
-              <a href="mailto:khadivi.homi@vertexmindai.com.au" className="flex items-center gap-4 group">
+              <a href={mailto} className="flex items-center gap-4 group">
                 <div className="w-10 h-10 flex items-center justify-center bg-[#0d0d16] border border-[#1e1e2e] rounded-lg text-[#7c6fcd] group-hover:border-[#7c6fcd44] transition-colors shrink-0">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
                     <rect x="2" y="4" width="20" height="16" rx="2" />
@@ -31,27 +33,29 @@ export default function ContactSection() {
                   </svg>
                 </div>
                 <div>
-                  <div className="text-xs text-[#44445a] mb-0.5">Email</div>
+                  <div className="text-xs text-[#7a7a96] mb-0.5">Email</div>
                   <div className="text-sm text-[#a0a0c0] group-hover:text-white transition-colors">khadivi.homi@vertexmindai.com.au</div>
                 </div>
               </a>
 
-              <a href="https://www.linkedin.com/in/homayoon-khadivi" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+              <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                 <div className="w-10 h-10 flex items-center justify-center bg-[#0d0d16] border border-[#1e1e2e] rounded-lg text-[#7c6fcd] group-hover:border-[#7c6fcd44] transition-colors shrink-0">
                   <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
                     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6ZM2 9h4v12H2ZM4 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" />
                   </svg>
                 </div>
                 <div>
-                  <div className="text-xs text-[#44445a] mb-0.5">LinkedIn</div>
+                  <div className="text-xs text-[#7a7a96] mb-0.5">LinkedIn</div>
                   <div className="text-sm text-[#a0a0c0] group-hover:text-white transition-colors">linkedin.com/in/homayoon-khadivi</div>
                 </div>
               </a>
             </div>
 
+            <BookCallButton className="mt-8 w-full sm:w-auto" />
+
             <div className="mt-10 bg-[#0d0d16] border border-[#1e1e2e] rounded-xl px-5 py-5">
               <h3 className="text-white font-semibold text-sm mb-2">How we can work together</h3>
-              <p className="text-[#666688] text-xs mb-4">From a single workshop to a full production system. We meet you where you are.</p>
+              <p className="text-[#8484a0] text-xs mb-4">From a single workshop to a full production system. We meet you where you are.</p>
               <div className="space-y-2">
                 {[
                   "AI strategy and roadmap workshops",
@@ -80,12 +84,12 @@ export default function ContactSection() {
                   </svg>
                 </div>
                 <h3 className="text-white font-semibold mb-2">Message sent</h3>
-                <p className="text-[#666688] text-sm">I&apos;ll get back to you within 24 hours.</p>
+                <p className="text-[#8484a0] text-sm">I&apos;ll get back to you within 24 hours.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label className="block text-xs text-[#666688] mb-1.5">Your name</label>
+                  <label className="block text-xs text-[#8484a0] mb-1.5">Your name</label>
                   <input
                     name="name"
                     type="text"
@@ -96,7 +100,7 @@ export default function ContactSection() {
                 </div>
 
                 <div>
-                  <label className="block text-xs text-[#666688] mb-1.5">Email address</label>
+                  <label className="block text-xs text-[#8484a0] mb-1.5">Email address</label>
                   <input
                     name="email"
                     type="email"
@@ -108,7 +112,7 @@ export default function ContactSection() {
                 </div>
 
                 <div>
-                  <label className="block text-xs text-[#666688] mb-1.5">What are you working on?</label>
+                  <label className="block text-xs text-[#8484a0] mb-1.5">What are you working on?</label>
                   <textarea
                     name="message"
                     required
