@@ -1,21 +1,38 @@
 name: Keep Streamlit Apps Alive
 
+# Streamlit Community Cloud sleeps apps after ~12h without a browser session.
+# A plain curl gets HTTP 200 from the sleep page, so it never wakes anything.
+# This opens each app in headless Chromium and clicks the wake button if needed.
 on:
   schedule:
-    - cron: "*/20 * * * *"
+    - cron: "17 */6 * * *" # every 6h; GitHub delays tighter schedules anyway
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: keep-alive
+  cancel-in-progress: false
+
 jobs:
-  ping:
-    name: Ping Streamlit apps
+  wake:
+    name: Wake Streamlit apps
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - name: Ping Streamlit apps
-        run: |
-          declare -A APPS
-          APPS["cancer-detection"]="https://cancer-detection-application.streamlit.app/"
-          APPS["gender-sentiment"]="https://gender-classification-text-sentiment-analysis-bprfgtyn4pfjc2hb.streamlit.app/"
-          for NAME in "${!APPS[@]}"; do
-            STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "${APPS[$NAME]}")
-            echo "$NAME: $STATUS"
-          done
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run keep-alive
+      - name: Upload failure screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: keep-alive-screenshots
+          path: keep-alive-*.png
+          retention-days: 7
