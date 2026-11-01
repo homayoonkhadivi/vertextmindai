@@ -1,11 +1,11 @@
 import { industries } from "@/data/industries";
 
 const slugImages: Record<string, string> = {
-  healthcare: "/images/healthcare_background.jpg",
-  energy: "/images/energy_card.jpg",
-  mining: "/images/mining_card.jpg",
-  sports: "/images/sports_card.jpg",
-  "digital-transformation": "/images/digital_card.jpg",
+  healthcare: "/images/healthcare_background.webp",
+  energy: "/images/energy_card.webp",
+  mining: "/images/mining_card.webp",
+  sports: "/images/sports_card.webp",
+  "digital-transformation": "/images/digital_card.webp",
 };
 
 export default function IndustriesOverview() {
@@ -56,7 +56,7 @@ export default function IndustriesOverview() {
           ))}
 
           <div className="rounded-xl border border-dashed border-[#2a2a3a] p-6 flex flex-col justify-center items-center text-center h-64">
-            <p className="text-[#44445a] text-sm leading-relaxed mb-4">
+            <p className="text-[#7a7a96] text-sm leading-relaxed mb-4">
               Don&apos;t see your industry? We work across any data-rich domain.
             </p>
             <a
