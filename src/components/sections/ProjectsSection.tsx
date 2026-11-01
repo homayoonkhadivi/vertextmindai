@@ -55,7 +55,7 @@ export default function ProjectsSection() {
 
   return (
     <>
-      <section className="px-6 py-24 border-t border-[#1e1e2e]">
+      <section id="projects" className="px-6 py-16 sm:py-24 border-t border-[#1e1e2e] scroll-mt-20">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-14">
             <p className="text-[#7c6fcd] text-xs font-semibold tracking-widest uppercase mb-3">
@@ -69,11 +69,11 @@ export default function ProjectsSection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {projects.map((project) => (
               <div
                 key={project.title}
-                className={`group relative bg-[#0d0d16] border rounded-2xl p-6 flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(124,111,205,0.15)] ${
+                className={`group relative bg-[#0d0d16] border rounded-2xl p-6 flex flex-col transition-all duration-300 md:hover:-translate-y-2 motion-reduce:transform-none hover:shadow-[0_20px_60px_rgba(124,111,205,0.15)] ${
                   project.highlight
                     ? "border-[#7c6fcd44]"
                     : "border-[#1e1e2e] hover:border-[#7c6fcd33]"

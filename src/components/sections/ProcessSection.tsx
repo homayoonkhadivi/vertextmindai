@@ -89,7 +89,7 @@ export default function ProcessSection() {
                 )}
                 <div className="text-3xl font-black text-[#1e1e30] mb-4 select-none">{step.number}</div>
                 <h3 className="text-white font-semibold text-sm mb-3">{step.title}</h3>
-                <p className="text-[#666688] text-xs leading-relaxed">{step.description}</p>
+                <p className="text-[#8484a0] text-xs leading-relaxed">{step.description}</p>
               </div>
             ))}
           </div>
@@ -103,7 +103,7 @@ export default function ProcessSection() {
           >
             <div className="text-left">
               <p className="text-white text-sm font-semibold">For the technical folks</p>
-              <p className="text-[#555577] text-xs mt-0.5">Engineering tracks, tooling, and full stack breakdown</p>
+              <p className="text-[#8a8aa8] text-xs mt-0.5">Engineering tracks, tooling, and full stack breakdown</p>
             </div>
             <span className={`text-[#7c6fcd] transition-transform duration-200 ${open ? "rotate-180" : ""}`}>
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -134,7 +134,7 @@ export default function ProcessSection() {
               </div>
 
               {/* Tech stack */}
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {stack.map((group) => (
                   <div key={group.category} className="bg-[#0a0a0f] border border-[#1e1e2e] rounded-xl p-5">
                     <p className="text-[#7c6fcd] text-xs font-semibold tracking-widest uppercase mb-4">

@@ -1,5 +1,7 @@
 "use client";
 
+import BookCallButton from "@/components/ui/BookCallButton";
+
 const chips = [
   "LLM Agents",
   "Computer Vision",
@@ -63,38 +65,39 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-4 items-center">
 
           {/* Left: text */}
-          <div className="text-center lg:text-left py-12">
-            <div className="inline-flex items-center gap-2 bg-[#111120] border border-[#7c6fcd33] text-[#9988dd] text-xs font-medium px-4 py-1.5 rounded-full mb-8 tracking-widest uppercase">
+          <div className="text-center lg:text-left pt-10 pb-4 lg:py-12">
+            <div className="inline-flex items-center gap-2 bg-[#111120] border border-[#7c6fcd33] text-[#9988dd] text-xs font-medium px-4 py-1.5 rounded-full mb-6 sm:mb-8 tracking-widest uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-[#7c6fcd] animate-pulse" />
               AI Consulting — Australia
             </div>
 
-            <h1 className="text-5xl sm:text-6xl font-extrabold leading-[1.1] tracking-tight mb-6">
+            <h1 className="text-[2.4rem] sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight mb-6">
               From raw data to{" "}
               <span className="text-[#7c6fcd]">decisions that matter</span>
             </h1>
 
-            <p className="text-[#8888aa] text-lg sm:text-xl max-w-xl mx-auto lg:mx-0 mb-4 leading-relaxed">
+            <p className="text-[#9a9abb] text-lg sm:text-xl max-w-xl mx-auto lg:mx-0 mb-4 leading-relaxed">
               Most businesses know AI can help. Few know how to get there.
             </p>
-            <p className="text-[#555577] text-base max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed">
+            <p className="text-[#8a8aa8] text-base max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed">
               We bridge that gap — from strategy and proof of concept through to
               production systems that drive measurable outcomes.
             </p>
 
-            <div className="flex items-center justify-center lg:justify-start gap-4 flex-wrap mb-10">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-10">
               <a
                 href="#services"
-                className="bg-[#7c6fcd] hover:bg-[#6a5db8] text-white font-semibold px-7 py-3 rounded-lg transition-colors"
+                className="bg-[#7c6fcd] hover:bg-[#6a5db8] text-white font-semibold px-7 py-3 rounded-lg transition-colors text-center"
               >
                 See Our Work
               </a>
               <a
                 href="#contact"
-                className="border border-[#2e2e44] text-[#a0a0c0] hover:border-[#7c6fcd66] hover:text-white font-semibold px-7 py-3 rounded-lg transition-colors"
+                className="border border-[#2e2e44] text-[#a0a0c0] hover:border-[#7c6fcd66] hover:text-white font-semibold px-7 py-3 rounded-lg transition-colors text-center"
               >
                 Start a Conversation
               </a>
+              <BookCallButton label="Book a call" />
             </div>
 
             <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
@@ -112,16 +115,19 @@ export default function Hero() {
           </div>
 
           {/* Right: brain image + animated neural network overlay */}
-          <div className="hidden lg:flex items-center justify-start py-8">
+          <div className="flex items-center justify-center lg:justify-start pb-12 lg:py-8">
             <div
-              className="relative w-full max-w-[500px] rounded-2xl overflow-hidden"
-              style={{ animation: "float 8s ease-in-out infinite" }}
+              className="relative w-full max-w-[340px] sm:max-w-[440px] lg:max-w-[500px] rounded-2xl overflow-hidden motion-safe:animate-float"
             >
               {/* Brain image */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/brain.jpg"
-                alt="AI brain neural network"
+                src="/images/brain.webp"
+                width={1400}
+                height={788}
+                fetchPriority="high"
+                decoding="async"
+                alt="Illustration of a brain overlaid with a neural network"
                 className="w-full block"
                 style={{ filter: "brightness(0.75) saturate(0.85)" }}
               />
@@ -139,6 +145,7 @@ export default function Hero() {
                   background:
                     "linear-gradient(110deg, transparent 35%, rgba(124,111,205,0.15) 50%, transparent 65%)",
                   animation: "scan 5s ease-in-out infinite",
+                  willChange: "transform",
                 }}
               />
 
@@ -146,6 +153,7 @@ export default function Hero() {
               <svg
                 className="absolute inset-0 w-full h-full"
                 viewBox="0 0 500 282"
+                aria-hidden="true"
                 style={{ overflow: "visible" }}
               >
                 <defs>

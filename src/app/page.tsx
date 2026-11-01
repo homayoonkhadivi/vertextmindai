@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="bg-[#0a0a0f] min-h-screen">
       <Navigation />
-      <main>
+      <main id="main">
         <Hero />
         <StatsSection />
         <IndustriesOverview />

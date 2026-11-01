@@ -14,6 +14,15 @@ const config: Config = {
         muted: "#8888aa",
         nav: "#a0a0b8",
       },
+      keyframes: {
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-8px)" },
+        },
+      },
+      animation: {
+        float: "float 8s ease-in-out infinite",
+      },
     },
   },
   plugins: [],
