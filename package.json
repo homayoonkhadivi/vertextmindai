@@ -5,8 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "prepare": "husky"
+    "start": "serve out -l 3000",
+    "prepare": "husky",
+    "typecheck": "tsc --noEmit",
+    "images": "node scripts/optimize-images.mjs",
+    "keep-alive": "node scripts/keep-alive.mjs",
+    "preview": "serve out -l 3000",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
     "@formspree/react": "^3.0.0",
@@ -15,13 +21,19 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.1",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.0",
     "husky": "^9.1.7",
     "postcss": "^8.4.0",
+    "serve": "^14.2.6",
+    "sharp": "^0.33.5",
     "tailwindcss": "^3.4.0",
     "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=18.18"
   }
 }
