@@ -17,6 +17,12 @@ async function wake(browser, name, url) {
   const page = await browser.newPage();
   try {
     await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60_000 });
+    console.log(`${name}: loaded ${page.url()}, title="${await page.title()}"`);
+
+    // Capture the initial page state for diagnostics regardless of outcome.
+    await page
+      .screenshot({ path: `keep-alive-${name}-initial.png`, fullPage: true })
+      .catch(() => {});
 
     const button = page.getByRole("button", { name: WAKE_BUTTON });
     const asleep = await button
